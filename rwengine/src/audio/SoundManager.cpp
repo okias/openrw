@@ -84,12 +84,6 @@ void SoundManager::initializeAVCodec() {
 #else
     av_log_set_level(AV_LOG_ERROR);
 #endif
-
-    // Some older versions of FFmpeg require it
-    // before calling  avformat_alloc_context()
-#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(58, 9, 100)
-    av_register_all();
-#endif
 }
 
 void SoundManager::deinitializeOpenAL() {
