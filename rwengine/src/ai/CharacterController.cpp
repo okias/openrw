@@ -31,7 +31,8 @@
 #include "objects/CharacterObject.hpp"
 #include "objects/VehicleObject.hpp"
 
-constexpr float kCloseDoorIdleTime = 2.f;
+// TODO: adjust door closing interval per vehicle
+constexpr float kCloseDoorIdleTime = 0.1f;
 
 namespace ai {
 
