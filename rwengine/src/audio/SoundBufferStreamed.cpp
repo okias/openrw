@@ -91,10 +91,10 @@ void SoundBufferStreamed::updateBuffers() {
                 return;
             }
 
-            ALint processed, state;
+            ALint processed, alState;
 
             /* Get relevant source info */
-            alCheck(alGetSourcei(source, AL_SOURCE_STATE, &state));
+            alCheck(alGetSourcei(source, AL_SOURCE_STATE, &alState));
             alCheck(alGetSourcei(source, AL_BUFFERS_PROCESSED, &processed));
 
             bool bufferedData = false;
@@ -127,7 +127,7 @@ void SoundBufferStreamed::updateBuffers() {
             }
 
             /* Make sure the source hasn't underrun */
-            if (bufferedData && state != AL_PLAYING && state != AL_PAUSED) {
+            if (bufferedData && alState != AL_PLAYING && alState != AL_PAUSED) {
                 ALint queued;
 
                 /* If no buffers are queued, playback is finished */
